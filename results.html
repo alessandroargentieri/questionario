@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Risultati</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.css">
+    <style>
+		#bg {
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-size: cover;
+			filter: blur(5px);
+		}
+		.center-screen {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			min-height: 100vh;
+		}
+		.fixed-to-bottom {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+      }
+	</style>	
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	<div id="bg"></div>
+
+	<nav class="navbar" role="navigation" aria-label="main navigation">
+		<div class="navbar-brand">
+		  <a class="navbar-item" href="https://bulma.io">
+			<img src="https://www.chiropraticavinci.it/wp-content/uploads/2019/07/logoVinciMobile-08.png" width="152" height="35">
+		  </a>
+	  
+		  <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+			<span aria-hidden="true"></span>
+			<span aria-hidden="true"></span>
+			<span aria-hidden="true"></span>
+		  </a>
+		</div>
+	  
+		<div id="navbarBasicExample" class="navbar-menu">
+		  <div class="navbar-start">
+			<a class="navbar-item" href="https://www.chiropraticavinci.it">
+			  Home
+			</a>
+			<div class="navbar-item has-dropdown is-hoverable">
+			  <a class="navbar-link">
+				Info
+			  </a>
+			  <div class="navbar-dropdown">
+				<a class="navbar-item">
+				  Scopo del questionario
+				</a>
+				<a class="navbar-item">
+				  Contatti
+				</a>
+				<hr class="navbar-divider">
+				<a class="navbar-item">
+				  Supporto
+				</a>
+			  </div>
+			</div>
+		  </div>
+	  
+		  <div class="navbar-end">
+			<div class="navbar-item">
+			  <div class="buttons">
+				<a id="exit" class="button is-danger">
+				  Esci
+				</a>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </nav>
+
+    <div id="notification" class="notification is-primary">
+		<div class="block">
+			Di seguito i <strong>risultati periodici</strong> del questionario.
+		</div>
+	</div>
+
+	<div id="chart1" style="width:100%; height:400px;"></div><br/>
+	<div id="chart2" style="width:100%; height:400px;"></div><br/>
+	<div id="chart3" style="width:100%; height:400px;"></div><br/>
+	<div id="chart4" style="width:100%; height:400px;"></div><br/>
+	<div id="chart5" style="width:100%; height:400px;"></div><br/>
+	<div id="chart6" style="width:100%; height:400px;"></div><br/>
+	<div id="chart7" style="width:100%; height:400px;"></div><br/>
+	<div id="chart8" style="width:100%; height:400px;"></div><br/>
+	<div id="chart9" style="width:100%; height:400px;"></div><br/>
+	<div id="chart10" style="width:100%; height:400px;"></div><br/>
+	
+
+	<section class="section">
+		<div class="container">
+			<div class="columns is-centered">
+			  <div class="column is-half">
+				<div id="container" style="width:100%; height:400px;"></div>
+			  </div>
+			</div>
+		</div>
+	</section>
+	<div id="footer" class="notification is-primary">
+		<div class="block">
+			Copyright <strong>Vinci Chiropratica S.r.l.</strong> anno 2023<br/>
+			Powered by <strong>Bulma CSS</strong>
+		</div><br/><br/>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+	<script>
+	VANTA.BIRDS({
+	  el: "#bg",
+	  mouseControls: true,
+	  touchControls: false,
+	  gyroControls: false,
+	  minHeight: 1700.00,
+	  minWidth: 500.00,
+	  scale: 1.00,
+	  scaleMobile: 1.00,
+	  forceAnimate: true,
+	  color1: 0x6ba1ac,
+      color2: 0x7f6000,
+	  backgroundColor: 0xCCFFF2
+	})
+	</script>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+        const chart1 = Highcharts.chart('chart1', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: '1. In generale direbbe che la Sua salute è…'
+            },
+            xAxis: {
+                categories: ['Buona', 'Passabile', 'Scadente']
+            },
+            yAxis: {
+                title: {
+                    text: 'Risposte'
+                }
+            },
+            series: [{
+                name: 'Fino ad 1 mese',
+                data: [5, 3, 1]
+            }, {
+                name: 'Fino a 6 mesi',
+                data: [4, 4, 3]
+            },
+			{
+                name: 'Oltre 6 mesi',
+                data: [1, 7, 1]
+            }]
+        });
+
+		const chart2 = Highcharts.chart('chart2', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: '2. Rispetto a un anno fa, come giudicherebbe, ora, la Sua salute in generale?'
+            },
+            xAxis: {
+                categories: ['Migliore', 'Uguale', 'Peggiore']
+            },
+            yAxis: {
+                title: {
+                    text: 'Risposte'
+                }
+            },
+            series: [{
+                name: 'Fino ad 1 mese',
+                data: [7, 2, 0]
+            }, {
+                name: 'Fino a 6 mesi',
+                data: [3, 2, 4]
+            },
+			{
+                name: 'Oltre 6 mesi',
+                data: [2, 4, 3]
+            }]
+        });
+
+		const chart3 = Highcharts.chart('chart3', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: '3. Fatica a fare attività come portare la spesa, salire le scale, passare l\'aspirapolvere?'
+            },
+            xAxis: {
+                categories: ['No', 'Un poco', 'Sì']
+            },
+            yAxis: {
+                title: {
+                    text: 'Risposte'
+                }
+            },
+            series: [{
+                name: 'Fino ad 1 mese',
+                data: [3, 3, 2]
+            }, {
+                name: 'Fino a 6 mesi',
+                data: [2, 3, 5]
+            },
+			{
+                name: 'Oltre 6 mesi',
+                data: [1, 3, 4]
+            }]
+        });
+
+		const chart4 = Highcharts.chart('chart4', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: '4. Riesce a fare il bagno e verstirsi da sola/o?'
+            },
+            xAxis: {
+                categories: ['Decisamente sì', 'Con qualche difficoltà', 'No']
+            },
+            yAxis: {
+                title: {
+                    text: 'Risposte'
+                }
+            },
+            series: [{
+                name: 'Fino ad 1 mese',
+                data: [5, 3, 1]
+            }, {
+                name: 'Fino a 6 mesi',
+                data: [4, 4, 3]
+            },
+			{
+                name: 'Oltre 6 mesi',
+                data: [1, 7, 1]
+            }]
+        });
+
+		const chart5 = Highcharts.chart('chart5', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: '5. Prende medicinali antidolorifici o antinfiammatori?'
+            },
+            xAxis: {
+                categories: ['Raramente', 'Di tanto in tanto', 'Con regolarità']
+            },
+            yAxis: {
+                title: {
+                    text: 'Risposte'
+                }
+            },
+            series: [{
+                name: 'Fino ad 1 mese',
+                data: [5, 3, 1]
+            }, {
+                name: 'Fino a 6 mesi',
+                data: [4, 4, 3]
+            },
+			{
+                name: 'Oltre 6 mesi',
+                data: [1, 7, 1]
+            }]
+        });
+
+		const chart6 = Highcharts.chart('chart6', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: '6. Fa attivita fisica?'
+            },
+            xAxis: {
+                categories: ['Con regolarità', 'Di tanto in tanto', 'Raramente']
+            },
+            yAxis: {
+                title: {
+                    text: 'Risposte'
+                }
+            },
+            series: [{
+                name: 'Fino ad 1 mese',
+                data: [1, 2, 1]
+            }, {
+                name: 'Fino a 6 mesi',
+                data: [3, 4, 3]
+            },
+			{
+                name: 'Oltre 6 mesi',
+                data: [5, 3, 1]
+            }]
+        });
+
+		const chart7 = Highcharts.chart('chart7', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: '7. Ha problemi di digestione?'
+            },
+            xAxis: {
+                categories: ['Raramente', 'Quando mangio pesante', 'Spesso']
+            },
+            yAxis: {
+                title: {
+                    text: 'Risposte'
+                }
+            },
+            series: [{
+                name: 'Fino ad 1 mese',
+                data: [5, 3, 1]
+            }, {
+                name: 'Fino a 6 mesi',
+                data: [4, 4, 3]
+            },
+			{
+                name: 'Oltre 6 mesi',
+                data: [1, 7, 1]
+            }]
+        });
+
+		const chart8 = Highcharts.chart('chart8', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: '8. Sente bruciore nella schiena quando si alza la mattina?'
+            },
+            xAxis: {
+                categories: ['No', 'Ogni tanto', 'Sì']
+            },
+            yAxis: {
+                title: {
+                    text: 'Risposte'
+                }
+            },
+            series: [{
+                name: 'Fino ad 1 mese',
+                data: [5, 3, 1]
+            }, {
+                name: 'Fino a 6 mesi',
+                data: [4, 4, 3]
+            },
+			{
+                name: 'Oltre 6 mesi',
+                data: [1, 7, 1]
+            }]
+        });
+
+		const chart9 = Highcharts.chart('chart9', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: '9. È stato mai sottoposto a trattamenti basati su miorilassanti?'
+            },
+            xAxis: {
+                categories: ['No', 'Sì, mi è capitato', 'Spesso']
+            },
+            yAxis: {
+                title: {
+                    text: 'Risposte'
+                }
+            },
+            series: [{
+                name: 'Fino ad 1 mese',
+                data: [5, 3, 1]
+            }, {
+                name: 'Fino a 6 mesi',
+                data: [4, 4, 3]
+            },
+			{
+                name: 'Oltre 6 mesi',
+                data: [1, 7, 1]
+            }]
+        });
+
+		const chart10 = Highcharts.chart('chart10', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: '10. Fa delle diete particolari?'
+            },
+            xAxis: {
+                categories: ['No nessuna', 'Seguo l\'alimentazione vegana', 'Mi affido ad un nutrizionista']
+            },
+            yAxis: {
+                title: {
+                    text: 'Risposte'
+                }
+            },
+            series: [{
+                name: 'Fino ad 1 mese',
+                data: [5, 3, 1]
+            }, {
+                name: 'Fino a 6 mesi',
+                data: [4, 4, 3]
+            },
+			{
+                name: 'Oltre 6 mesi',
+                data: [1, 7, 1]
+            }]
+        });
+    });
+
+    $("#exit").click(function(e) {
+          e.preventDefault();
+          window.location.replace("login.html");
+        });
+	</script>
+</body>
+</html>
+
